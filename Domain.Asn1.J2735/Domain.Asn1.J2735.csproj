@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Econolite.Ode.Domain.Asn1.J2735</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Asn1J2735\Asn1J2735.csproj" />
+      <ProjectReference Include="..\Econolite.J2735_201603\J2735_201603\J2735.201603.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="asn1csrt">
+        <HintPath>$(SolutionDir)\Econolite.J2735_201603\lib\asn1csrt.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
