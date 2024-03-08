@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Asn1J2735\Asn1J2735.csproj" />
-      <ProjectReference Include="..\Econolite.J2735_201603\J2735_201603\J2735.201603.csproj" />
+      <ProjectReference Include="$(SolutionDir)\Econolite.J2735_201603\J2735_201603\J2735.201603.csproj" />
     </ItemGroup>
 
     <ItemGroup>
