@@ -1,0 +1,12 @@
+# Enable auto CRLF
+*          text=auto
+
+*.cs       text diff=csharp
+*.csproj   text merge=union
+
+# Solution and batch files should always have CRLF on checkout
+*.sln      text eol=crlf merge=union
+*.bat      text eol=crlf
+
+*.jpg      binary
+*.png      binary
