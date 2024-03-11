@@ -1,3 +1,4 @@
+System.Text;
 using Econolite.Asn1J2735.J2735;
 using Econolite.Asn1J2735.J2735.TimStorage;
 using Econolite.Asn1J2735.Tim;
@@ -9,12 +10,15 @@ public static class TimExtensions
 {
     public static MessageFrame ToMessageFrame(this TimMessage value)
     {
+        var timeStampYearAndMinutes = value.TimeStamp.ConvertUtcToYearAndMinutes();
         return new MessageFrame()
         {
             MessageId = 31,
             Value = new TravelerInformation()
             {
                 MsgCnt = value.DataFrames.Count(),
+                TimeStamp = timeStampYearAndMinutes.MinutesSinceYearStart,
+                PacketID = Encoding.UTF8.GetBytes(value.PacketId),
                 DataFrames = value.DataFrames.Select(frame => frame.ToTravelerInformation())
             }
         };
@@ -25,17 +29,17 @@ public static class TimExtensions
         var startYearTime = value.StartTime.ConvertUtcToYearAndMinutes();
         return new TravelerDataFrame()
         {
-            SspTimRights = 6,
+            SspTimRights = 0,
             FrameType = value.Content.ToTravelerInfoType(),
             MsgId = value.MsgId,
             StartYear = startYearTime.Year,
             StartTime = startYearTime.MinutesSinceYearStart,
             DurationTime = value.Duration,
             Priority = value.Priority,
-            SspLocationRights = 6,
+            SspLocationRights = 0,
             Regions = value.Regions.ToList(),
-            SspMsgRights1 = 6,
-            SspMsgRights2 = 3,
+            SspMsgRights1 = 0,
+            SspMsgRights2 = 0,
             Content = value.Content
         };
     }
